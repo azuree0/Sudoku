@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  background: transparent;
+}
+
+body {
+  margin: 0;
+  /* Hug content so frosted background does not extend below the board/HUD row */
+  min-height: 0;
+  height: fit-content;
+  padding-top: env(titlebar-area-height, 0px);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #e8eaef;
+  user-select: none;
+  /* Frosted shell: tint + blur of desktop behind the window (board canvas stays opaque). */
+  background: rgba(12, 14, 20, 0.52);
+  backdrop-filter: blur(36px) saturate(120%);
+  -webkit-backdrop-filter: blur(36px) saturate(120%);
+  -webkit-app-region: drag;
+}
+
+#app {
+  display: flex;
+  gap: 16px;
+  /* Same inset above the board row as below (matches top padding) */
+  padding: 16px;
+  align-items: flex-start;
+  justify-content: center;
+  background: transparent;
+  -webkit-app-region: drag;
+}
+
+/* Transparent around the triangle mesh; cells are drawn opaque on canvas in renderer.ts */
+#board {
+  display: block;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+  -webkit-app-region: no-drag;
+}
+
+#hud {
+  min-width: 160px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: rgba(18, 20, 28, 0.4);
+  backdrop-filter: blur(20px) saturate(115%);
+  -webkit-backdrop-filter: blur(20px) saturate(115%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.22);
+  -webkit-app-region: no-drag;
+}
+
+.label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8b93a7;
+  margin-bottom: 4px;
+}
+
+/* Light silver strip: upper-left specular glaze, darker toward lower-right (same light as board cells) */
+#newgame,
+#resolve {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-right-color: rgba(95, 105, 125, 0.42);
+  border-bottom-color: rgba(95, 105, 125, 0.48);
+  color: #151b22;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+  background:
+    radial-gradient(
+      ellipse 110% 90% at 14% 10%,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.22) 38%,
+      transparent 58%
+    ),
+    linear-gradient(158deg, #f2f5f9 0%, #cfd6e2 45%, #a8b2c2 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 1px 0 0 rgba(255, 255, 255, 0.55),
+    0 2px 5px rgba(0, 0, 0, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+#newgame:hover,
+#resolve:hover {
+  background:
+    radial-gradient(
+      ellipse 110% 90% at 16% 8%,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.28) 40%,
+      transparent 60%
+    ),
+    linear-gradient(158deg, #f8fafc 0%, #d8dfea 45%, #b4bdcc 100%);
+  border-color: rgba(255, 255, 255, 0.65);
+  border-right-color: rgba(85, 95, 115, 0.4);
+  border-bottom-color: rgba(85, 95, 115, 0.46);
+}
+
+#newgame:active,
+#resolve:active {
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.14),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.stat {
+  margin-bottom: 10px;
+}
+
+.stat span:last-child {
+  font-size: 22px;
+  font-weight: 600;
+  color: #f2f4f8;
+}
+
+.status {
+  min-height: 1.25em;
+  font-size: 14px;
+  color: #c9d1dc;
+  margin: 12px 0 0;
+}
+
+.help {
+  font-size: 11px;
+  line-height: 1.45;
+  color: #6b7280;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.help + .help {
+  margin-top: 10px;
+}

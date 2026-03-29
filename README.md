@@ -67,7 +67,7 @@ npx vite src/renderer
 │                                                                 │
 │ • 1979     Dell puzzle magazines: “Number Place” (Howard Garns) │
 │                                                                 │
-│ • 1984     Japan: Nikoli names it 数独 (Sudoku); national fad    │
+│ • 1984     Japan: Nikoli names it 数独 (Sudoku); national fad   │
 │                                                                 │
 │ • 1990s    Puzzle books and newspapers in Japan                 │
 │                                                                 │
